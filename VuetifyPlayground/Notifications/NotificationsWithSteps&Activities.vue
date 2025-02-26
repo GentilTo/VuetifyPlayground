@@ -4,12 +4,12 @@
   const items = ref([
     { title: 'Step 1', activity: '', icon: 'mdi-check', class: 'success' },
     {
-      title: 'Step 2',
+      title: 'Step 2 ',
       activity: '(Process: 1)',
       icon: 'mdi-progress',
       class: 'primary',
     },
-    { title: 'Step 3', activity: '', icon: 'mdi-timer', class: 'cancel' },
+    { title: 'Step 3 ', activity: '', icon: 'mdi-timer', class: 'cancel' },
     { title: 'Step 4', activity: '', icon: 'mdi-timer', class: 'cancel' },
     { title: 'Step 5', activity: '', icon: 'mdi-timer', class: 'cancel' },
   ])
@@ -59,7 +59,7 @@
       </v-row>
 
       <v-row
-        align="start"
+        align="center"
         no-gutters
         class="component-transation"
         :style="{ height: centerHeight, minHeight: 'auto', maxHeight: '210px' }"
@@ -76,8 +76,6 @@
         <!-- Description and items -->
         <v-col cols="9">
           <small v-if="!isExpanded">{{ runningText }}</small>
-
-          <!-- Looping through items -->
           <v-row
             v-if="isExpanded"
             v-for="(item, i) in items"
@@ -100,7 +98,7 @@
               /></v-icon>
             </v-col>
             <v-col cols="10" style="height: auto; min-height: auto">
-              <small>{{ item.title + ' ' + item.activity }}</small>
+              <small>{{ item.title + item.activity }}</small>
             </v-col>
           </v-row>
         </v-col>
@@ -181,6 +179,7 @@
       color="grey darken-1"
       variant="tonal"
       class="rounded-lg custom-alert dark-theme"
+      :style="{ height: isExpanded ? '210px' : '140px', width: '380px'}"
     >
       <v-row align="end" no-gutters>
         <v-col cols="2" />
@@ -195,14 +194,44 @@
         </v-col>
       </v-row>
 
-      <v-row align="center" no-gutters style="height: 50px">
+      <v-row
+        align="center"
+        no-gutters
+        class="component-transation"
+        :style="{ height: centerHeight, minHeight: 'auto', maxHeight: '210px' }"
+      >
         <!-- Azure icon -->
         <v-col cols="2">
           <VProgressCircular indeterminate class="primary-dark-theme" />
         </v-col>
         <!-- Description and buttons -->
         <v-col cols="10">
-          <small class="dark-theme">{{ runningText }}</small>
+          <small v-if="!isExpanded" class="dark-theme">{{ runningText }}</small>
+          <v-row
+            v-if="isExpanded"
+            v-for="(item, i) in items"
+            :key="i"
+            class="activity-row"
+            align="center"
+            no-gutters
+            style="height: auto; min-height: auto"
+          >
+            <v-col cols="1" style="height: auto; min-height: auto">
+              <v-icon
+                v-if="item.icon != 'mdi-progress'"
+                v
+                :class="item.class"
+                size="15px"
+                >{{ item.icon }}</v-icon
+              >
+              <v-icon size="15px" v-if="item.icon == 'mdi-progress'">
+                <VProgressCircular indeterminate class="primary-dark-theme"
+              /></v-icon>
+            </v-col>
+            <v-col cols="10" style="height: auto; min-height: auto">
+              <small class="dark-theme">{{ item.title + item.activity }}</small>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
 
@@ -222,7 +251,8 @@
               size="x-small"
               rounded
               class="mr-1 dark-theme"
-              >View more</v-btn
+              @click="toggleSize"
+              >{{ isExpanded ? 'View less' : 'View more' }}</v-btn
             >
           </div>
         </v-col>

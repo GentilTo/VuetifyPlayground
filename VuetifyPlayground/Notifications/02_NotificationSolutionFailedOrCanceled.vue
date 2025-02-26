@@ -75,7 +75,7 @@
       </v-row>
       <v-row align="center" no-gutters style="height: 50px">
         <!-- Azure icon -->
-        <v-col align="left" cols="2">
+        <v-col align="center" cols="2">
           <v-avatar>
             <v-icon size="50" class="error">mdi-docker</v-icon>
           </v-avatar>
@@ -123,7 +123,7 @@
       </v-row>
       <v-row align="center" no-gutters style="height: 50px">
         <!-- Azure icon -->
-        <v-col align="left" cols="2">
+        <v-col align="center" cols="2">
           <v-avatar>
             <v-icon size="50" class="cancel">mdi-microsoft-azure</v-icon>
           </v-avatar>
@@ -166,9 +166,9 @@
       </v-row>
       <v-row align="center" no-gutters style="height: 50px">
         <!-- Azure icon -->
-        <v-col align="left" cols="2">
+        <v-col align="center" cols="2">
           <v-avatar>
-            <v-icon size="50">mdi-docker</v-icon>
+            <v-icon size="50" class="cancel">mdi-docker</v-icon>
           </v-avatar>
         </v-col>
         <!-- Description and buttons -->

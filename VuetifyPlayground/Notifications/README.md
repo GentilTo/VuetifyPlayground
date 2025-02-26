@@ -67,7 +67,3 @@ The **Notification DTO** manages notifications using JSON properties:
 
 **(*) Mandatory fields**
 
----
-
-This README ensures clarity and consistency when implementing the notification component. Let me know if you need refinements!
-

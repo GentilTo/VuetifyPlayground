@@ -1,9 +1,9 @@
 # Notifications Component
 
 ## Overview
-The **Notification** component consists of a **3-row, 3-column** layout, following **Vuetify standards (2x8x2 columns)**. It adapts between two sizes:
+The **Notification** component consists of a **3-row, 3-column** layout, following **Vuetify standards (1x9x2 columns)**. It adapts between two sizes:
 - **Collapsed:** 380x140 pixels
-- **Expanded:** 380x210 pixels
+- **Expanded:** 380xAuto pixels
 
 ## Layout Structure
 
@@ -21,17 +21,7 @@ The **Notification** component consists of a **3-row, 3-column** layout, followi
 - **Column 3:** Timestamp
 
 ## Themes & Styling
-The component supports both **light** and **dark** themes with predefined colors:
-
-### **Light Theme:**
-- Background color: `#F3F3F3`
-- Font color: `#9E9E9E`
-- Component colors: `#9E9E9E`
-
-### **Dark Theme:**
-- Background color: `#757575`
-- Font color: `#FFFFFF`
-- Component colors: `#FFFFFF`
+The component supports both **light** and **dark** themes with predefined colors.
 
 ### **Additional Colors (Company-defined):**
 - Light theme circular progress bar: `#361D5C`
@@ -45,25 +35,27 @@ The component supports both **light** and **dark** themes with predefined colors
 To ensure consistency, follow these best practices when using notifications:
 
 1. **Title Formatting:**
-   - Use a **noun phrase** for new notifications (e.g., *Solution creation*).
-   - Use **past participle** for completed tasks (e.g., *Solution created*).
+   - Use a **noun phrase** for new notifications (e.g., *Creating new solution 123*).
+   - Use **past participle** for completed tasks (e.g., *Solution 123 created*).
 2. **Descriptions** should be as detailed as possible.
 3. **Button Labels** should not be excessively long.
 4. **Timestamp Format:**
    - Use **hours** if the notification was created on the same day.
    - Use `#d` format if the notification was created **days ago**.
 5. **Process Steps:**
-   - A notification **cannot exceed 5 steps**.
+   - A notification can display the steps of a task. 
 
 ## Notification DTO
-The **Notification DTO** manages notifications using JSON properties:
+The way icons and badges are displayed in the **Notification DTO** is using the Icon property and the Badge JSON property:
 
 | Property   | Description |
 |------------|-------------|
-| **StartTitle** (*) | Title shown when the notification is created. |
-| **EndTitle** (*) | Title shown when the associated task completes. |
 | **Icon** (*) | Icon representing the task that triggered the notification. |
 | **Badge** | Optional badge to enhance process description. |
 
 **(*) Mandatory fields**
 
+| Property   | Description |
+|------------|-------------|
+| **Icon** (*) | Icon representing the badge icon result (e.g. mdi-rocket). |
+| **Color** | Optional badge to enhance process description (e.g. success). |
